@@ -21,6 +21,14 @@ export class LoginComponent implements OnInit {
 
     console.log([username, password]);
     this.service.findUserByCredentials(username, password)
+      .then((response) => {
+        if (response.status === 204) {
+          alert("Invalid username/password!")
+          return;
+        } else {
+          return response.json();
+        }
+      })
       .then((user) => {
         if (user) {
           this.router.navigate(['/profile', user._id]);
