@@ -1,0 +1,13 @@
+.assignment-title {
+  font-weight: bold;
+}
+
+.assignment-points {
+  align-self: flex-end;
+  font-weight: bold;
+  float: right;
+}
+
+.assignment-essay-answer {
+  font-weight: bold;
+}
