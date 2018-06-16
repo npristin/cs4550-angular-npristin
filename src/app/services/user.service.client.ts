@@ -55,6 +55,23 @@ export class UserServiceClient {
       });
   }
 
+  register(username, password) {
+    const user = {
+      username: username,
+      password: password
+    };
+
+    return fetch('http://localhost:4000/api/register',
+      {
+        body: JSON.stringify(user),
+        credentials: 'include', // include, same-origin, *omit
+        method: 'post',
+        headers: {
+          'content-type': 'application/json'
+        }
+      });
+  }
+
   logout() {
     return fetch('http://localhost:4000/api/logout',
       {
