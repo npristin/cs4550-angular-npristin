@@ -4,16 +4,21 @@ import {CourseViewerComponent} from "./course-viewer/course-viewer.component";
 import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {SectionListComponent} from "./section-list/section-list.component";
+import {AdminComponent} from "./admin/admin.component";
+
 const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: WhiteBoardComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'profile/:userId', component: ProfileComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'course/:courseId', component: CourseViewerComponent },
+  { path: 'course/:courseId/section', component: SectionListComponent },
   { path: 'course/:courseId/module/:moduleId', component: CourseViewerComponent },
   { path: 'course/:courseId/module/:moduleId/lesson/:lessonId', component: CourseViewerComponent },
+  { path: 'admin/course', component: AdminComponent},
+  { path: 'admin/course/:courseId/section', component: AdminComponent },
   { path: '**', component: WhiteBoardComponent} // last
 ];
 export const routing = RouterModule.forRoot(appRoutes);
