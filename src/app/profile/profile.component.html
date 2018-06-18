@@ -1,24 +1,46 @@
 <div class="container-fluid">
   <h1>Profile</h1>
 
-  <input [(ngModel)]="user.username"
+  <input [(ngModel)]="username"
          placeholder="username"
          class="form-control"/>
-  <input [(ngModel)]="user.firstName"
+  <input [(ngModel)]="firstName"
          placeholder="first name"
          class="form-control"/>
-  <input [(ngModel)]="user.lastName"
+  <input [(ngModel)]="lastName"
          placeholder="lastName"
          class="form-control"/>
-  <input [(ngModel)]="user.email"
+  <input [(ngModel)]="email"
          placeholder="email"
          class="form-control"/>
-  <button (click)="update(user)"
+  <input [(ngModel)]="phone"
+         placeholder="phone number"
+         class="form-control"/>
+  <input [(ngModel)]="address"
+         placeholder="address"
+         class="form-control"/>
+  <button (click)="updateUser(user)"
           class="btn btn-primary btn-block">
     Update
   </button>
 
+  <h2>Sections ({{sections.length}})</h2>
+
+  <ul class="list-group">
+    <li *ngFor="let enrollment of sections" class="list-group-item">
+      {{enrollment.section.name}}
+      ({{enrollment.section.seats}})
+      <a routerLink="/course/{{enrollment.section.courseId}}/section">
+        {{enrollment.section.name}}
+        ({{enrollment.section.seats}})</a>
+      <button (click)="unenroll(enrollment)"
+              class="float-right btn btn-danger">Drop
+      </button>
+    </li>
+  </ul>
+
   <a routerLink="/login" (click)="logout()" >Logout</a>
   <a routerLink="/home" class="float-right">Home</a>
+  <a [hidden]="!admin" routerLink="/admin/course"> | Admin page</a>
 
 </div>

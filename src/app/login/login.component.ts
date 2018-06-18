@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     this.password = password;
 
     console.log([username, password]);
-    this.service.findUserByCredentials(username, password)
+    this.service.login(username, password)
       .then((response) => {
         if (response.status === 204) {
           alert("Invalid username/password!")
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       })
       .then((user) => {
         if (user) {
-          this.router.navigate(['/profile', user._id]);
+          this.router.navigate(['/profile']);
         }
       })
   }

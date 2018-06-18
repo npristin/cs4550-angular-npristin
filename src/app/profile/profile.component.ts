@@ -1,7 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
-import {User} from "../models/user.model.client";
 import {UserServiceClient} from "../services/user.service.client";
-import {Router, ActivatedRoute} from "@angular/router";
+import {Router} from "@angular/router";
+import {SectionServiceClient} from "../services/section.service.client";
 
 @Component({
   selector: 'app-profile',
@@ -10,28 +11,71 @@ import {Router, ActivatedRoute} from "@angular/router";
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private service: UserServiceClient, private router: Router) { }
+  constructor(private userService: UserServiceClient,
+              private sectionService: SectionServiceClient,
+              private router: Router) { }
 
-  user: User = new User();
-  update(user: User) {
-    console.log(user);
-    // this.service
-    //   .updateUser(user)
-    //   .then(user => this.user = user);
-  }
+  user = {};
+  username;
+  password;
+  firstName;
+  lastName;
+  email;
+  sections = [];
+  address;
+  admin;
+  userId;
+  phone;
 
   logout() {
-    console.log("logging out!");
-    this.service.logout();
+    this.userService
+      .logout()
+      .then(() =>
+        this.router.navigate(['login']));
+
   }
 
   ngOnInit() {
-    this.service
+    this.userService
       .profile()
-      .then(user => this.user = user);
-    // this.service
-    //   .findUserById('5b1ec6c2d06a450655254f14')
-    //   .then(user => this.user = user);
+      .then(user => {
+        this.username = user.username;
+        this.password = user.password;
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+        this.phone = user.phone;
+        this.email = user.email;
+        this.address = user.address;
+        this.userId = user._id;
+        this.admin = user.username === 'admin' && user.password === 'admin'
+      });
+
+    this.sectionService
+      .findSectionsForStudent()
+      .then(sections => this.sections = sections );
   }
 
+  updateUser(user) {
+    console.log("updating!")
+
+    user = {
+      username: this.username,
+      password: this.password,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      phone: this.phone,
+      email: this.email,
+      address: this.address,
+    };
+    this.userService.updateUser(user)
+      .then(() => alert('Profile updated!!'));
+  }
+
+  unenroll(section) {
+    this.sectionService
+      .unEnrollStudent(section._id)
+      .then(sections => {
+        this.sections = sections;
+      });
+  }
 }
