@@ -4,10 +4,10 @@ import {CourseServiceClient} from '../services/course.service.client';
 
 @Component({
   selector: 'app-admin-page',
-  templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.css']
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class AdminPageComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
   constructor(private service: CourseServiceClient) {
   }
