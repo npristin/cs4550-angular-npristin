@@ -3,8 +3,21 @@
     Whiteboard
   </h1>
 
-  <a routerLink="/register" class="btn btn-primary register-button">Register</a>
-  <a routerLink="/login" class="btn btn-primary login-button">Login</a>
+  <div [hidden]="!loggedIn">
+    <a routerLink="/profile">Profile</a>
+  </div>
+  <div [hidden]="loggedIn">
+    <a routerLink="/register" class="btn btn-primary register-button">Register</a>
+    <a routerLink="/login" class="btn btn-primary login-button">Login</a>
+  </div>
+
+  <h2>Section Enrolled In: </h2>
+  <ul class="list-group">
+    <li *ngFor="let enrollment of sections" class="list-group-item">
+      {{enrollment.section.name}}
+      ({{enrollment.section.seats}})
+    </li>
+  </ul>
 
   <app-course-grid></app-course-grid>
 </div>
