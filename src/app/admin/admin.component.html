@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <h2>Course Grid ({{courses.length}})</h2>
+
+  <div class="row">
+    <div class="col-4">
+      <ul class="list-group">
+        <li *ngFor="let course of courses" class="list-group-item">
+          {{course.title}}
+          <a routerLink="/admin/course/{{course.id}}/section"
+             class="btn btn-primary float-right">Edit Sections</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-8">
+      <app-admin-section-list></app-admin-section-list>
+    </div>
+  </div>
+</div>
