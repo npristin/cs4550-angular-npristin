@@ -28,25 +28,26 @@ export class UserServiceClient {
     });
   }
 
-  updateUser(userId, user) {
-    return fetch('http://localhost:4000/api/user/' + userId, {
+  updateUser(user) {
+    console.log("updating in user service!!")
+    return fetch('http://localhost:4000/api/profile', {
       body: JSON.stringify(user),
       credentials: 'include',
       method: 'put',
       headers: {
         'content-type': 'application/json'
       }
-    });
+    }).then(response => response.json());
   }
 
-  findUserByCredentials(username, password) {
-    const user = {
+  login(username, password) {
+    const credentials = {
       username: username,
       password: password
     };
     return fetch('http://localhost:4000/api/login',
       {
-        body: JSON.stringify(user),
+        body: JSON.stringify(credentials),
         credentials: 'include', // include, same-origin, *omit
         method: 'post',
         headers: {
@@ -78,5 +79,18 @@ export class UserServiceClient {
         method: 'post',
         credentials: 'include'
       })
+  }
+
+  delete() {
+    return fetch('http://localhost:4000/api/profile', {
+      credentials: 'include',
+      method: 'delete'
+    });
+  }
+
+  loggedIn() {
+    return fetch('http://localhost:4000/api/login/loggedin', {
+      credentials: 'include'
+    });
   }
 }
