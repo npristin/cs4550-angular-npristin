@@ -15,7 +15,6 @@ export class ProfileComponent implements OnInit {
               private sectionService: SectionServiceClient,
               private router: Router) { }
 
-  user = {};
   username;
   password;
   firstName;
@@ -36,6 +35,8 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("hey hey hey")
+
     this.userService
       .profile()
       .then(user => {
@@ -55,10 +56,10 @@ export class ProfileComponent implements OnInit {
       .then(sections => this.sections = sections );
   }
 
-  updateUser(user) {
+  updateUser() {
     console.log("updating!")
 
-    user = {
+    const user = {
       username: this.username,
       password: this.password,
       firstName: this.firstName,
@@ -68,7 +69,7 @@ export class ProfileComponent implements OnInit {
       address: this.address,
     };
     this.userService.updateUser(user)
-      .then(() => alert('Profile updated!!'));
+      .then(() => alert("Profile updated!"))
   }
 
   unenroll(section) {
