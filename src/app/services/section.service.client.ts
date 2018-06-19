@@ -51,7 +51,11 @@ export class SectionServiceClient {
       this.findSectionsForStudent());
   }
 
-  updateSection(sectionId, section) {
+  updateSection(sectionId, sectionName) {
+    const section = {
+      name: sectionName
+    }
+
     return fetch('http://localhost:4000/api/section/' + sectionId, {
       body: JSON.stringify(section),
       credentials: 'include',

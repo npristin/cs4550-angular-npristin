@@ -49,6 +49,11 @@ export class AdminSectionListComponent implements OnInit {
       .then(response => this.sections = response);
   }
 
+  editSection(sectionId, sectionName) {
+    this.service.updateSection(sectionId, sectionName)
+      .then(() => alert("Section has been updated!"))
+  }
+
   ngOnInit() {
   }
 
