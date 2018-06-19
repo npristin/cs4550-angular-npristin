@@ -62,10 +62,10 @@ export class SectionListComponent implements OnInit {
         .enrollStudentInSection(section._id)
         .then((response) => {
           if (response.status === 403) {
-            alert('This section is full.');
+            alert('This section is full! Sorry :(');
           }
           if (response.status === 404) {
-            alert('Cannot enroll in same section twice');
+            alert('You are already enrolled in this section!');
           }
           if (response.status === 200) {
             this.router.navigate(['profile']);
@@ -73,6 +73,7 @@ export class SectionListComponent implements OnInit {
         });
     } else {
       alert('Please log in to enroll!');
+      this.router.navigate(['login']);
     }
   }
 }
