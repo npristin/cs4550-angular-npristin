@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div>
-  <h1>Profile
-  <a routerLink="/login" (click)="logout()" class="btn btn-primary button">Logout</a>
-  <a routerLink="/home" class="float-right" class="btn btn-primary button">Home</a>
-  <a [hidden]="!admin" routerLink="/admin/course" class="btn btn-primary button">Admin Page</a>
+    <h1>Profile
+      <a routerLink="/login" (click)="logout()" class="btn btn-primary button">Logout</a>
+      <a routerLink="/home" class="btn btn-primary button">Home</a>
+      <a [hidden]="!admin" routerLink="/admin/course" class="btn btn-primary button">Admin Page</a>
     </h1>
-    </div>
+  </div>
 
   <input [(ngModel)]="username"
          placeholder="username"
@@ -29,7 +29,7 @@
           class="btn btn-primary btn-block">
     Update
   </button>
-  <h2>Enrollments</h2>
+  <h2 class="enrollment-header">Enrollments</h2>
 
   <ul class="list-group">
     <li *ngFor="let enrollment of sections" class="list-group-item">

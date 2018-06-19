@@ -12,14 +12,15 @@
       </span>
     </h1>
   </div>
-
-  <h2>Sections Enrolled In: </h2>
+  <h2>Courses Enrolled In: </h2>
   <ul class="list-group">
     <li *ngFor="let enrollment of sections" class="list-group-item">
-      {{enrollment.section.name}}
-      ({{enrollment.section.seats}})
+      <a routerLink="/course/{{enrollment.section.courseId}}/section" class="section-link">
+        {{enrollment.section.name}}</a>
     </li>
   </ul>
 
-  <app-course-grid></app-course-grid>
+  <div class="available-courses">
+    <app-course-grid></app-course-grid>
+  </div>
 </div>

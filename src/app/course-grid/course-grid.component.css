@@ -1,3 +1,9 @@
 .card {
   margin-bottom: 15px;
 }
+
+.enroll-button {
+  margin-left: 10px;
+  background-color: #48D1CC;
+  border-color: #48D1CC;
+}

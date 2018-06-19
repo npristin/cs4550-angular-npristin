@@ -3,8 +3,13 @@
   margin-left: 10px;
   margin-top: 10px;
   background-color: #B0C4DE;
+  border-color: #B0C4DE;
 }
 
 .section-link {
   font-size: 24px;
+}
+
+.enrollment-header {
+  margin-top: 20px;
 }

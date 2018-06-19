@@ -10,7 +10,7 @@ import {UserServiceClient} from "../services/user.service.client";
 })
 export class SectionListComponent implements OnInit {
 
-  constructor(private service: SectionServiceClient,
+  constructor(private sectionService: SectionServiceClient,
               private router: Router,
               private route: ActivatedRoute,
               private userService: UserServiceClient) {
@@ -42,14 +42,14 @@ export class SectionListComponent implements OnInit {
   loadSections(courseId) {
     this.courseId = courseId;
     this
-      .service
+      .sectionService
       .findSectionsForCourse(courseId)
       .then(sections => this.sections = sections);
   }
 
   createSection(sectionName, seats) {
     this
-      .service
+      .sectionService
       .createSection(this.courseId, sectionName, seats)
       .then(() => {
         this.loadSections(this.courseId);
@@ -58,7 +58,7 @@ export class SectionListComponent implements OnInit {
 
   enroll(section) {
     if (this.loggedIn) {
-      this.service
+      this.sectionService
         .enrollStudentInSection(section._id)
         .then((response) => {
           if (response.status === 403) {
