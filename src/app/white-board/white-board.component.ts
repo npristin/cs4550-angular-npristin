@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserServiceClient} from "../services/user.service.client";
 import {SectionServiceClient} from "../services/section.service.client";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-white-board',
@@ -13,7 +14,8 @@ export class WhiteBoardComponent implements OnInit {
   sections = [];
 
   constructor(private userService: UserServiceClient,
-              private sectionService: SectionServiceClient) { }
+              private sectionService: SectionServiceClient,
+              private router: Router) { }
 
   ngOnInit() {
     this.userService.loggedIn()
@@ -24,5 +26,13 @@ export class WhiteBoardComponent implements OnInit {
     this.sectionService
       .findSectionsForStudent()
       .then(sections => this.sections = sections);
+  }
+
+  logout() {
+    this.userService
+      .logout()
+      .then(() =>
+        this.router.navigate(['login']));
+
   }
 }

@@ -1,8 +1,12 @@
 .login-button {
   float: right;
+  background-color: #B0C4DE;
+  margin-top: 10px;
 }
 
 .register-button {
   float: right;
   margin-left: 10px;
+  background-color: #B0C4DE;
+  margin-top: 10px;
 }

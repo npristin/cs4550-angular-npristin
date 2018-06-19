@@ -1,17 +1,19 @@
 <div class="container-fluid">
-  <h1>
-    Whiteboard
-  </h1>
-
-  <div [hidden]="!loggedIn">
-    <a routerLink="/profile">Profile</a>
+  <div>
+    <h1>
+      Whiteboard
+      <span [hidden]="!loggedIn">
+        <a routerLink="/profile" class="btn btn-primary register-button">Profile</a>
+        <a routerLink="/login" (click)="logout()" class="btn btn-primary register-button">Logout</a>
+      </span>
+      <span [hidden]="loggedIn">
+        <a routerLink="/register" class="btn btn-primary register-button">Register</a>
+        <a routerLink="/login" class="btn btn-primary login-button">Login</a>
+      </span>
+    </h1>
   </div>
-  <div [hidden]="loggedIn">
-    <a routerLink="/register" class="btn btn-primary register-button">Register</a>
-    <a routerLink="/login" class="btn btn-primary login-button">Login</a>
-  </div>
 
-  <h2>Section Enrolled In: </h2>
+  <h2>Sections Enrolled In: </h2>
   <ul class="list-group">
     <li *ngFor="let enrollment of sections" class="list-group-item">
       {{enrollment.section.name}}

@@ -1,5 +1,11 @@
 <div class="container-fluid">
-  <h1>Profile</h1>
+  <div>
+  <h1>Profile
+  <a routerLink="/login" (click)="logout()" class="btn btn-primary button">Logout</a>
+  <a routerLink="/home" class="float-right" class="btn btn-primary button">Home</a>
+  <a [hidden]="!admin" routerLink="/admin/course" class="btn btn-primary button">Admin Page</a>
+    </h1>
+    </div>
 
   <input [(ngModel)]="username"
          placeholder="username"
@@ -23,24 +29,15 @@
           class="btn btn-primary btn-block">
     Update
   </button>
-
-  <h2>Sections ({{sections.length}})</h2>
+  <h2>Enrollments</h2>
 
   <ul class="list-group">
     <li *ngFor="let enrollment of sections" class="list-group-item">
-      {{enrollment.section.name}}
-      ({{enrollment.section.seats}})
-      <a routerLink="/course/{{enrollment.section.courseId}}/section">
-        {{enrollment.section.name}}
-        ({{enrollment.section.seats}})</a>
+      <a routerLink="/course/{{enrollment.section.courseId}}/section" class="section-link">
+        {{enrollment.section.name}}</a>
       <button (click)="unenroll(enrollment)"
               class="float-right btn btn-danger">Drop
       </button>
     </li>
   </ul>
-
-  <a routerLink="/login" (click)="logout()" >Logout</a>
-  <a routerLink="/home" class="float-right">Home</a>
-  <a [hidden]="!admin" routerLink="/admin/course"> | Admin page</a>
-
 </div>
