@@ -3,13 +3,13 @@
          placeholder="Section Name"
          class="form-control">
   <input [(ngModel)]="seats"
-         placeholder="Seats available"
+         placeholder="Seats Available"
          class="form-control">
-  <button (click)="createSection(sectionName, seats)" class="btn btn-success btn-block">
+  <button (click)="createSection(sectionName, seats)" class="btn btn-primary btn-block">
     Add Section
   </button>
 
-  <ul class="list-group">
+  <ul class="list-group sections">
     <li *ngFor="let section of sections" class="list-group-item">
       {{section.name}} (Seats Available: {{section.seats}})
       <button (click)="deleteSection(section._id)"
