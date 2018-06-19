@@ -3,8 +3,8 @@
     <h1>
       Whiteboard
       <span [hidden]="!loggedIn">
-        <a routerLink="/profile" class="btn btn-primary register-button">Profile</a>
         <a routerLink="/login" (click)="logout()" class="btn btn-primary register-button">Logout</a>
+        <a routerLink="/profile" class="btn btn-primary register-button">Profile</a>
       </span>
       <span [hidden]="loggedIn">
         <a routerLink="/register" class="btn btn-primary register-button">Register</a>

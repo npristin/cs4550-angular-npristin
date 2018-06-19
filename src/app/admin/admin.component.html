@@ -1,10 +1,14 @@
 <div class="container-fluid">
-  <h2>Course Grid ({{courses.length}})</h2>
+  <div>
+    <h1>Courses:
+      <a routerLink="/home" class="btn btn-primary button">Home</a>
+    </h1>
+  </div>
 
-  <div class="row">
+  <div class="row modules">
     <div class="col-4">
       <ul class="list-group">
-        <li *ngFor="let course of courses" class="list-group-item">
+        <li *ngFor="let course of courses" class="list-group-item section">
           {{course.title}}
           <a routerLink="/admin/course/{{course.id}}/section"
              class="btn btn-primary float-right">Edit Sections</a>
