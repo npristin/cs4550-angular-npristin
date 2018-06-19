@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
-import {CourseNavigatorServiceClient} from "./services/course-navigator.service.client";
-import { CourseNavigatorComponent } from './course-navigator/course-navigator.component';
 import { WhiteBoardComponent } from './white-board/white-board.component';
 import { CourseGridComponent } from './course-grid/course-grid.component';
 import {CourseServiceClient} from "./services/course.service.client";
@@ -28,7 +26,6 @@ import {AdminComponent} from "./admin/admin.component";
 @NgModule({
   declarations: [
     AppComponent,
-    CourseNavigatorComponent,
     WhiteBoardComponent,
     CourseGridComponent,
     CourseViewerComponent,
@@ -48,7 +45,6 @@ import {AdminComponent} from "./admin/admin.component";
     routing
   ],
   providers: [
-    CourseNavigatorServiceClient,
     CourseServiceClient,
     ModuleServiceClient,
     LessonServiceClient,
