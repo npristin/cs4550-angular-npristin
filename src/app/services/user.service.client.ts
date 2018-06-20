@@ -1,12 +1,15 @@
 export class UserServiceClient {
 
+  USER_API_URL = 'https://cs4550-s1-node-npristin.herokuapp.com/api/user';
+  PROFILE_API_URL = 'https://cs4550-s1-node-npristin.herokuapp.com/api/profile';
+
   findUserById(userId) {
-    return fetch('http://localhost:4000/api/user/' + userId)
+    return fetch(this.USER_API_URL + '/' + userId)
       .then(response => response.json());
   }
 
   profile() {
-    return fetch('http://localhost:4000/api/profile',
+    return fetch(this.PROFILE_API_URL,
       {
         credentials: 'include', // include, same-origin, *omit
       })
@@ -18,7 +21,7 @@ export class UserServiceClient {
       username: username,
       password: password
     };
-    return fetch('http://localhost:4000/api/user', {
+    return fetch(this.USER_API_URL, {
       body: JSON.stringify(user),
       credentials: 'include', // include, same-origin, *omit
       method: 'post',
@@ -30,7 +33,7 @@ export class UserServiceClient {
 
   updateUser(user) {
     console.log("updating in user service!!")
-    return fetch('http://localhost:4000/api/profile', {
+    return fetch(this.PROFILE_API_URL, {
       body: JSON.stringify(user),
       credentials: 'include',
       method: 'put',
@@ -45,7 +48,7 @@ export class UserServiceClient {
       username: username,
       password: password
     };
-    return fetch('http://localhost:4000/api/login',
+    return fetch('https://cs4550-s1-node-npristin.herokuapp.com/api/login',
       {
         body: JSON.stringify(credentials),
         credentials: 'include', // include, same-origin, *omit
@@ -62,7 +65,7 @@ export class UserServiceClient {
       password: password
     };
 
-    return fetch('http://localhost:4000/api/register',
+    return fetch('https://cs4550-s1-node-npristin.herokuapp.com/api/register',
       {
         body: JSON.stringify(user),
         credentials: 'include', // include, same-origin, *omit
@@ -74,7 +77,7 @@ export class UserServiceClient {
   }
 
   logout() {
-    return fetch('http://localhost:4000/api/logout',
+    return fetch('https://cs4550-s1-node-npristin.herokuapp.com/api/logout',
       {
         method: 'post',
         credentials: 'include'
@@ -82,14 +85,14 @@ export class UserServiceClient {
   }
 
   delete() {
-    return fetch('http://localhost:4000/api/profile', {
+    return fetch(this.PROFILE_API_URL, {
       credentials: 'include',
       method: 'delete'
     });
   }
 
   loggedIn() {
-    return fetch('http://localhost:4000/api/login/loggedin', {
+    return fetch('https://cs4550-s1-node-npristin.herokuapp.com/api/login/loggedin', {
       credentials: 'include'
     });
   }

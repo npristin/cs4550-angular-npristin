@@ -1,6 +1,6 @@
 export class WidgetServiceClient {
   findWidgetsForLesson(lessonId) {
-    return fetch('http://localhost:8080/api/widget')
+    return fetch('https://cs4550-java-server-npristin.herokuapp.com/api/widget')
       .then(response => response.json());
   }
 }
