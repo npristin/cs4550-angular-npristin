@@ -1,4 +1,19 @@
-# MyAngularApp
+# CS 4550 - Web Development
+Assignment 5 - Angular Client
+
+By: Nicole Pristin
+
+## Links to Live System - Heroku
+Home Page: [Home](https://cs4550-s1-angular-npristin.herokuapp.com)
+
+## Links to Related Github Repositories
+Node JS Server: [Node Server](https://github.com/npristin/cs4550-node-npristin)
+
+Java Middle Tier: [Java Middle Tier](https://github.com/npristin/cs4550-java-server-npristin)
+
+
+
+# Angular CLI
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
